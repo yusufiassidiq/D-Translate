@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Job;
 
 class ListjobController extends Controller
 {
@@ -21,8 +22,17 @@ class ListjobController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // public function index()
+    // {
+    //     return view('listjob');
+    // }
     public function index()
     {
-        return view('listjob');
+    	// mengambil data pegawai
+    	$job = Job::all();
+        $job = Job::paginate(5);
+    	// mengirim data pegawai ke view pegawai
+    	return view('listjob', ['job' => $job]);
     }
+    
 }

@@ -52,17 +52,32 @@
                 @if (Route::has('login'))
                     @auth
                     <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/listjob">List Job</a>
-                </li>
+                      <a class="nav-link js-scroll-trigger" href="/listjob">List Job</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
                   
                     @else
                     <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="{{ route('login') }}">Login</a>
-                </li>
+                      <a class="nav-link js-scroll-trigger" href="{{ route('login') }}">Login</a>
+                    </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="{{ route('register') }}">Register</a>
-                </li>
+                      <a class="nav-link js-scroll-trigger" href="{{ route('register') }}">Register</a>
+                    </li>
                         @endif
                     @endauth
                 </div>
