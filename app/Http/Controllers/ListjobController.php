@@ -29,10 +29,29 @@ class ListjobController extends Controller
     public function index()
     {
     	// mengambil data pegawai
-    	$job = Job::all();
+    	// $job = Job::all();
         $job = Job::paginate(5);
     	// mengirim data pegawai ke view pegawai
     	return view('listjob', ['job' => $job]);
     }
-    
+    public function add()
+    {
+    	return view('addjob');
+    }
+    public function store(Request $request)
+    {
+    	$this->validate($request,[
+    		'namadokumen' => 'required',
+            'keterangan' => 'required',
+            'harga' => 'required'
+    	]);
+ 
+        Job::create([
+    		'namadokumen' => $request->namadokumen,
+            'keterangan' => $request->keterangan,
+            'harga' => $request->harga
+    	]);
+ 
+    	return redirect('/listjob');
+    }
 }
