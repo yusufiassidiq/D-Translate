@@ -29,10 +29,14 @@ class ListjobController extends Controller
     public function index()
     {
     	// mengambil data pegawai
-    	// $job = Job::all();
-        $job = Job::paginate(5);
+    	$job = Job::all();
+        // $job = Job::paginate(5);
+        $sorted = $job->sortByDesc('updated_at');
     	// mengirim data pegawai ke view pegawai
-    	return view('listjob', ['job' => $job]);
+    	return view('listjob', [
+            'job' => $job,
+            'sorted' => $sorted
+            ]);
     }
     public function add()
     {

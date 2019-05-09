@@ -29,18 +29,15 @@
         </a>
   </div>
 </header>
-<ul>
-	<!-- @foreach($job as $j)
-		<li>{{ "Nama : ". $j->namadokumen . ' | Keterangan : ' . $j->keterangan . ' | Harga : ' . $j->harga}}</li>
-	@endforeach -->
-</ul>
+
 <div class="container">
     <div class="col-md-10">
         <!-- Page Heading -->
             <h1 class="my-4">Page Heading
               <small>Secondary Text</small>
             </h1>
-        @foreach($job as $j)
+        @foreach($sorted as $j)
+            
             <!-- Container -->
                 <div class="row">
                   <div class="col-md-5">
@@ -49,6 +46,7 @@
                     </a>
                   </div>
                   <div class="col-md-7">
+                      
                     <h4>{{ "Dokumen : ". $j->namadokumen }}</h4>
                     <h5>{{ "Biaya : ". $j->harga }}</h5>
                     <p>{{ "Keterangan : ". $j->keterangan }}</p>
@@ -60,17 +58,6 @@
         
                 <hr>
         @endforeach
-        
-    </div>
-        <!-- Pagination -->
-            <ul class="pagination justify-content-center">
-              <li>
-              {{ $job->links() }}
-              </li>
-            </ul>
-
-    
-
     
 </div>
 <!-- /.container -->
