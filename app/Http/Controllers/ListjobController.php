@@ -47,15 +47,26 @@ class ListjobController extends Controller
     	$this->validate($request,[
     		'namadokumen' => 'required',
             'keterangan' => 'required',
-            'harga' => 'required'
-    	]);
- 
+            'harga' => 'required',
+            'file' => 'required|mimes:jpeg,png,jpg,docx,doc,pdf|max:2048',
+        ]);
+        
+        // menyimpan data file yang diupload ke variabel $file
+        $file = $request->file('file');
+        $nama_file = time()."_".$file->getClientOriginalName();
+        // isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_file';
+        $file->move($tujuan_upload,$nama_file);
+        
         Job::create([
     		'namadokumen' => $request->namadokumen,
             'keterangan' => $request->keterangan,
-            'harga' => $request->harga
+            'harga' => $request->harga,
+            'file' => $nama_file
     	]);
  
-    	return redirect('/listjob');
+        return redirect('/listjob');
+        // return redirect()->back();
+        
     }
 }

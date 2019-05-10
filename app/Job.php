@@ -8,5 +8,5 @@ class Job extends Model
 {
     protected $table="job";
 
-    protected $fillable = ['namadokumen','keterangan','harga'];
+    protected $fillable = ['namadokumen','keterangan','harga','file'];
 }

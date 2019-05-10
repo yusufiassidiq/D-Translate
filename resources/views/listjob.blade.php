@@ -3,6 +3,7 @@
 @section('content')
 
 <header>
+    <title>Daftar Dokumen</title>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -31,32 +32,58 @@
 </header>
 
 <div class="container">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <!-- Page Heading -->
-            <h1 class="my-4">Page Heading
-              <small>Secondary Text</small>
-            </h1>
+            <h2 class="text-center">Dokumen yang Tersedia
+              <!-- <small>Secondary Text</small> -->
+            </h2>
+            <br>
+            <br>
         @foreach($sorted as $j)
-            
-            <!-- Container -->
+            <div class="container">
+
+                <!-- <table class="row">
+                    <thead>
+                        <tr>
+                    <th>
+                        <a href="#">
+                            <img width="200px" class="img-fluid rounded mb-3 mb-md-0" src="{{ url('/data_file/'.$j->file) }}" alt="">
+                        </a>
+                    </th>
+                    <th>
+                        <div class="col-md-15">
+                            <h4>{{ "Dokumen : ". $j->namadokumen }}</h4>
+                            <h5>{{ "Biaya : ". $j->harga }}</h5>
+                            <p>{{ "Keterangan : ". $j->keterangan }}</p>
+                            <a class="btn btn-primary" href="#" style = "position:absolute; top:160px;">View Project</a> -->
+                            <!-- <a class="btn btn-primary" href="#" >View Project</a>
+                        </div>                      
+                    </th>
+                        </tr>
+                    </thead>
+                </table>
+                <hr> -->
                 <div class="row">
-                  <div class="col-md-5">
-                    <a href="#">
-                      <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/450x250" alt="">
-                    </a>
-                  </div>
-                  <div class="col-md-7">
-                      
-                    <h4>{{ "Dokumen : ". $j->namadokumen }}</h4>
-                    <h5>{{ "Biaya : ". $j->harga }}</h5>
-                    <p>{{ "Keterangan : ". $j->keterangan }}</p>
+    
+                        <div class="col-md-4 col-sm-4 col-xl-3 col-lg-4">
+                            <a href="#">
+                              <img height="200px" width="250px" src="{{ url('/data_file/'.$j->file) }}" alt="">
+                            </a>
+                        </div>
+
+                        <div class="col-md-7">
+
+                            <h4>{{ "Dokumen : ". $j->namadokumen }}</h4>
+                            <h5>{{ "Biaya : ". $j->harga }}</h5>
+                            <p>{{ "Keterangan : ". $j->keterangan }}</p>
+
+                            <a class="btn btn-primary" href="#" style = "position:absolute; top:163px;">View Project</a>
+                            <!-- <a class="btn btn-primary" href="#" >View Project</a> -->
+                        </div>
                     
-                    <a class="btn btn-primary" href="#" style = "position:absolute; top:160px;">View Project</a>
-                  </div>
                 </div>
-            <!-- /.row -->
-        
-                <hr>
+                        <hr>
+            </div>
         @endforeach
     
 </div>
