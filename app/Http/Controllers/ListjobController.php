@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Job;
+use Auth;
 
 class ListjobController extends Controller
 {
@@ -29,13 +30,13 @@ class ListjobController extends Controller
     public function index()
     {
     	// mengambil data pegawai
-    	$job = Job::all();
+        $job = Job::all();
         // $job = Job::paginate(5);
         $sorted = $job->sortByDesc('updated_at');
     	// mengirim data pegawai ke view pegawai
     	return view('listjob', [
             'job' => $job,
-            'sorted' => $sorted
+            'sorted' => $sorted,
             ]);
     }
     public function add()
@@ -68,5 +69,18 @@ class ListjobController extends Controller
         return redirect('/listjob');
         // return redirect()->back();
         
+    }
+    //controller untuk ngeliat satu document
+    public function show_detail(Request $request, $id){
+
+        //query cari dokumen
+        
+        $job = Job::where('id', $id)->first();
+        // if($job === NULL){
+        //     return redirect('/listjob')->with('danger','No document found');
+        // }
+        $users = Auth::user()->id;   
+        return view('viewjob', compact('users','job'));
+        // return view('/viewjob');
     }
 }
