@@ -27,4 +27,3 @@ Route::get('/listjob', 'ListjobController@index')->name('listjob');
 Route::get('/listjob/add', 'ListjobController@add');
 Route::post('/listjob/store', 'ListjobController@store');
 Route::get('/viewjob/{id}', 'ListjobController@show_detail')->name('viewjob');
-Route::get('viewjob/{$job->id}/download', 'ListjobController@tes')->name('download');

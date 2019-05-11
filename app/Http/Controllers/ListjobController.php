@@ -91,10 +91,4 @@ class ListjobController extends Controller
         return view('viewjob', compact('users','job'));
         // return view('/viewjob');
     }
-    public function tes(Request $request, $id)
-    {
-        $users=Auth::user();
-        $job = Job::where('id', $id)->first();
-        return view('addjob',compact('job','users'));
-    }
 }
