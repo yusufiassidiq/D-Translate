@@ -20,7 +20,7 @@
                 <div class="row">
     
                         <div class="col-md-4 col-sm-4 col-xl-3 col-lg-4">
-                            <a href="#">
+                            <a>
                               <img height="350px" width="250px" src="{{ url('/data_file/'.$j->image) }}" alt="">
                             </a>
                         </div>

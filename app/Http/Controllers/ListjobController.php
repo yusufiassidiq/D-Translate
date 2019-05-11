@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Job;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ListjobController extends Controller
 {
@@ -50,6 +51,7 @@ class ListjobController extends Controller
             'keterangan' => 'required',
             'harga' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg|max:2048',
+            'file' => 'required|file',
         ]);
         
         // menyimpan data file yang diupload ke variabel $file
@@ -58,12 +60,18 @@ class ListjobController extends Controller
         // isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'data_file';
         $image->move($tujuan_upload,$nama_image);
+        //menyimpan file
+        $file = $request->file('file');
+        $nama_file = $file->getClientOriginalName();
+        $tujuan_upload = 'data_file';
+        $file->move($tujuan_upload,$nama_file);
         
         Job::create([
     		'namadokumen' => $request->namadokumen,
             'keterangan' => $request->keterangan,
             'harga' => $request->harga,
-            'image' => $nama_image
+            'image' => $nama_image,
+            'file' => $nama_file,
     	]);
  
         return redirect('/listjob');
@@ -82,5 +90,11 @@ class ListjobController extends Controller
         $users = Auth::user()->id;   
         return view('viewjob', compact('users','job'));
         // return view('/viewjob');
+    }
+    public function tes(Request $request, $id)
+    {
+        $users=Auth::user();
+        $job = Job::where('id', $id)->first();
+        return view('addjob',compact('job','users'));
     }
 }
