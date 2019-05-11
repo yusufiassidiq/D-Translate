@@ -138,11 +138,11 @@
                                         </div>
 
                                         <div class="form-group">
-		            				        <label>File</label><br/>
-                                            <input type="file" name="file">
-                                            @if($errors->has('file'))
+		            				        <label>Gambar</label><br/>
+                                            <input type="file" name="image">
+                                            @if($errors->has('image'))
                                                 <div class="text-danger">
-                                                    {{ $errors->first('file')}}
+                                                    {{ $errors->first('image')}}
                                                 </div>
                                             @endif
 		            			        </div>
