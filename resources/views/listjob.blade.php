@@ -21,7 +21,7 @@
     
                         <div class="col-md-4 col-sm-4 col-xl-3 col-lg-4">
                             <a href="#">
-                              <img height="200px" width="250px" src="{{ url('/data_file/'.$j->file) }}" alt="">
+                              <img height="350px" width="250px" src="{{ url('/data_file/'.$j->image) }}" alt="">
                             </a>
                         </div>
 
@@ -29,9 +29,10 @@
 
                             <h4>{{ "Dokumen : ". $j->namadokumen }}</h4>
                             <h5>{{ "Biaya : ". $j->harga }}</h5>
+                            <br>
                             <p>{{ "Keterangan : ". $j->keterangan }}</p>
 
-                            <a class="btn btn-primary" href="viewjob/{{$j->id}}/" style = "position:absolute; top:163px;">View Document</a>
+                            <a class="btn btn-primary" href="viewjob/{{$j->id}}/" style = "position:absolute; top:312px;">View Document</a>
                             <!-- <a class="btn btn-primary" href="#" >View Project</a> -->
                         </div>
                     

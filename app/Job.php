@@ -8,7 +8,7 @@ class Job extends Model
 {
     protected $table="job";
 
-    protected $fillable = ['namadokumen','keterangan','harga','file'];
+    protected $fillable = ['namadokumen','keterangan','harga','image'];
 
     public function user(){
 		return $this->hasOne(User::class);
