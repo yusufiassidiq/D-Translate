@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Creative - Start Bootstrap Theme</title>
+  <title>DTranslate</title>
 
   <!-- Font Awesome Icons -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,18 +38,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                </li>
                 @if (Route::has('login'))
                     @auth
                     <li class="nav-item">
