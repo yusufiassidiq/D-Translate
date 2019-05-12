@@ -30,6 +30,8 @@ Route::post('/listjob/store', 'ListjobController@store');
 Route::get('job/hapus/{id}', 'ListjobController@delete');
 Route::get('/viewjob/{id}', 'ListjobController@show_detail')->name('viewjob');
 
+Route::get('/aktivitas','UserController@show')->name('aktivitas');
+
 // multiauth
 Route::get('/login/translator', 'Auth\LoginController@showTranslatorLoginForm');
 Route::get('/register/translator', 'Auth\RegisterController@showTranslatorRegisterForm');

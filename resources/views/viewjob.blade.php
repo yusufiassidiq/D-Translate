@@ -19,11 +19,31 @@
                     <br>
                     <p>{{ "Keterangan : ". $job->keterangan }}</p>
                     <div class="form-group">
-                        <a class="btn btn-primary" href="#" style = "position:absolute; top:312px;">Terjemahkan</a>
+                        <a class="btn btn-primary" data-toggle="modal" href="" style = "position:absolute; top:312px;" data-target="#myModal">Terjemahkan</a>
                         <a href="{{url('/data_file/'.$job->file)}}" style = "position:absolute; top:312px;left:130px;" class="btn btn-primary">Download</a>
                         <a href="/listjob" class="btn btn-secondary" style = "position:absolute; top:312px;left:228px;">Kembali</a>
                     </div>
-                </div>                
+                </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>            
             </div>
         </div>
     </div>
