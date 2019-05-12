@@ -2,6 +2,23 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+    function readURL(input) { // Mulai membaca inputan gambar
+    if (input.files && input.files[0]) {
+    var reader = new FileReader(); // Membuat variabel reader untuk API FileReader
+    
+    reader.onload = function (e) { // Mulai pembacaan file
+    $('#preview_gambar') // Tampilkan gambar yang dibaca ke area id #preview_gambar
+    .attr('src', e.target.result)
+    .width(150); // Menentukan lebar gambar preview (dalam pixel)
+    //.height(200); // Jika ingin menentukan lebar gambar silahkan aktifkan perintah pada baris ini
+    };
+    
+    reader.readAsDataURL(input.files[0]);
+    }
+    }
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -102,7 +119,7 @@
                                         {{ csrf_field() }}
 
                                         <div class="form-group">
-                                            <label>Nama</label>
+                                            <label>Nama <font color="red">*</font></label>
                                             <input type="text" name="namadokumen" class="form-control" placeholder="Nama Dokumen">
 
                                             @if($errors->has('namadokumen'))
@@ -114,7 +131,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Keterangan</label>
+                                            <label>Keterangan <font color="red">*</font></label>
                                             <textarea name="keterangan" class="form-control" placeholder="Keterangan Dokumen"></textarea>
 
                                              @if($errors->has('keterangan'))
@@ -126,7 +143,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Biaya</label>
+                                            <label>Biaya <font color="red">*</font></label>
                                             <input type="text" name="harga" class="form-control" placeholder="Biaya yang disediakan">
 
                                             @if($errors->has('harga'))
@@ -138,8 +155,9 @@
                                         </div>
 
                                         <div class="form-group">
-		            				        <label>Gambar</label><br/>
-                                            <input type="file" name="image">
+		            				        <label>Gambar <font color="red">*</font></label><br/>
+                                            <input type="file" name="image" onchange="readURL(this);">
+                                            <img id="preview_gambar" src="#" alt=" " />
                                             @if($errors->has('image'))
                                                 <div class="text-danger">
                                                     {{ $errors->first('image')}}
@@ -148,7 +166,7 @@
 		            			        </div>
 
                                         <div class="form-group">
-		            				        <label>File</label><br/>
+		            				        <label>File <font color="red">*</font></label><br/>
                                             <input type="file" name="file">
                                             @if($errors->has('file'))
                                                 <div class="text-danger">
@@ -156,7 +174,7 @@
                                                 </div>
                                             @endif
 		            			        </div>
-
+                                        <font color="red"> <p>* required</p> </font>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-success" value="Simpan">
                                             <a href="/listjob" class="btn btn-primary" style = "position:absolute; right:20px;">Kembali</a>
@@ -164,7 +182,7 @@
 
 
                                     </form>
-
+                                    
                                 </div>
                             </div>
                         </div>

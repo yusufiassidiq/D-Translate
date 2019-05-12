@@ -56,7 +56,7 @@ class ListjobController extends Controller
     {
     	$this->validate($request,[
     		'namadokumen' => 'required',
-            'keterangan' => 'required|max:730',
+            'keterangan' => 'required|max:730'  ,
             'harga' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg|max:2048',
             'file' => 'required|file',
