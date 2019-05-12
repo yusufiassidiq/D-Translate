@@ -17,6 +17,15 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        if ($guard == "translator" && Auth::guard($guard)->check()) {
+            return redirect('/translator');
+        }
+        if ($guard == "personal" && Auth::guard($guard)->check()) {
+            return redirect('/personal');
+        }
+        if ($guard == "company" && Auth::guard($guard)->check()) {
+            return redirect('/company');
+        }
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }

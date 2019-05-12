@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Company;
+use App\Translator;
+use App\Personal;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -38,6 +42,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:translator');
+        $this->middleware('guest:personal');
+        $this->middleware('guest:company');
     }
 
     /**
@@ -68,5 +75,54 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function showTranslatorRegisterForm()
+    {
+        return view('auth.register', ['url' => 'translator']);
+    }
+
+    public function showPersonalRegisterForm()
+    {
+        return view('auth.register', ['url' => 'personal']);
+    }
+
+    public function showCompanyRegisterForm()
+    {
+        return view('auth.register', ['url' => 'company']);
+    }
+
+    protected function createPersonal(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $personal = Personal::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ]);
+        return redirect()->intended('login/personal');
+    }
+
+    protected function createCompany(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $company = Writer::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'profile' => $request['profile']
+        ]);
+        return redirect()->intended('login/company');
+    }
+
+    protected function createTranslator(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $translator = Translator::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/translator');
     }
 }
