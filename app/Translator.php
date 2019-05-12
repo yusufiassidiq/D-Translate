@@ -10,7 +10,7 @@ class Translator extends Authenticatable
 {
 	use Notifiable;
 
-    protected $guard = 'personal';
+    protected $guard = 'translator';
     protected $fillable = ['name', 'email', 'password',];
     protected $hidden = ['password', 'remember_token',];
 }

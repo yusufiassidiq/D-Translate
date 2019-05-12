@@ -91,17 +91,17 @@ return [
         //     'table' => 'users',
         // ],
         'translators' => [
-            'driver' => 'session',
+            'driver' => 'eloquent',
             'model' => App\Translator::class,
         ],
 
         'personals' => [
-            'driver' => 'session',
+            'driver' => 'eloquent',
             'model' => App\Personal::class,
         ],
 
         'companies' => [
-            'driver' => 'session',
+            'driver' => 'eloquent',
             'model' => App\Company::class,
         ],
     ],
