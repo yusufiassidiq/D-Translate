@@ -45,6 +45,26 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="notelf" class="col-md-4 col-form-label text-md-right">Phone Number </label>
+
+                            <div class="col-md-6">
+                                    <input type="text" class="form-control @error('notelf') is-invalid @enderror" name="notelf" required onkeydown="return ( event.ctrlKey || event.altKey 
+                                                        || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) 
+                                                        || (95<event.keyCode && event.keyCode<106)
+                                                            || (event.keyCode==8) || (event.keyCode==9) 
+                                                        || (event.keyCode>34 && event.keyCode<40) 
+                                                        || (event.keyCode==46) )">
+                                                        <div class="invalid-feedback">
+                                                            Please enter your phone number</div>
+                                @error('notelf')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
