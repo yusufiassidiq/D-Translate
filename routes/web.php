@@ -27,7 +27,10 @@ Route::get('/listjob', 'ListjobController@index')->name('listjob');
 Route::get('/listjob/add', 'ListjobController@add');
 Route::post('/listjob/store', 'ListjobController@store');
 
+Route::get('job/hapus/{id}', 'ListjobController@delete');
+Route::get('/viewjob/{id}', 'ListjobController@show_detail')->name('viewjob');
 
+// multiauth
 Route::get('/login/translator', 'Auth\LoginController@showTranslatorLoginForm');
 Route::get('/register/translator', 'Auth\RegisterController@showTranslatorRegisterForm');
 

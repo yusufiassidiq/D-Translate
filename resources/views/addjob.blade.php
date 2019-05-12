@@ -148,6 +148,16 @@
 		            			        </div>
 
                                         <div class="form-group">
+		            				        <label>File</label><br/>
+                                            <input type="file" name="file">
+                                            @if($errors->has('file'))
+                                                <div class="text-danger">
+                                                    {{ $errors->first('file')}}
+                                                </div>
+                                            @endif
+		            			        </div>
+
+                                        <div class="form-group">
                                             <input type="submit" class="btn btn-success" value="Simpan">
                                             <a href="/listjob" class="btn btn-primary" style = "position:absolute; right:20px;">Kembali</a>
                                         </div>
