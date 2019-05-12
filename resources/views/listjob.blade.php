@@ -32,7 +32,7 @@
                                     <div class="col-md-7">
 
                                         <h4>{{ "Dokumen : ". $j->namadokumen }}</h4>
-                                        <h5>{{ "Biaya : ". $j->harga }}</h5>
+                                        <h5>{{ "Biaya : ". $j->harga }} Rupiah</h5>
                                         <br>
                                         <p>{{ "Keterangan : ". $j->keterangan }}</p>
 
