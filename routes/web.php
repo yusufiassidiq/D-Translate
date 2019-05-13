@@ -30,26 +30,35 @@ Route::post('/listjob/store', 'ListjobController@store');
 Route::get('job/hapus/{id}', 'ListjobController@delete');
 Route::get('/viewjob/{id}', 'ListjobController@show_detail')->name('viewjob');
 
+Route::view('/home', 'home')->middleware('auth');
+
 // multiauth
-Route::get('/login/translator', 'Auth\LoginController@showTranslatorLoginForm');
-Route::get('/register/translator', 'Auth\RegisterController@showTranslatorRegisterForm');
+Route::get('/login/translator', 'Auth\LoginController@showTranslatorLoginForm')->name('tlogin');
+Route::get('/register/translator', 'Auth\RegisterController@showTranslatorRegisterForm')->name('tregist');
 
 Route::post('/login/translator', 'Auth\LoginController@translatorLogin');
 Route::post('/register/translator', 'Auth\RegisterController@createTranslator');
     
-Route::get('/login/personal', 'Auth\LoginController@showPersonalLoginForm');
-Route::get('/register/personal', 'Auth\RegisterController@showPersonalRegisterForm');
+Route::get('/login/personal', 'Auth\LoginController@showPersonalLoginForm')->name('plogin');
+Route::get('/register/personal', 'Auth\RegisterController@showPersonalRegisterForm')->name('pregist');
 
 Route::post('/login/personal', 'Auth\LoginController@personalLogin');
 Route::post('/register/personal', 'Auth\RegisterController@createPersonal');
 
-Route::get('/login/company', 'Auth\LoginController@showCompanyLoginForm');
-Route::get('/register/company', 'Auth\RegisterController@showCompanyRegisterForm');
+Route::get('/login/company', 'Auth\LoginController@showCompanyLoginForm')->name('clogin');
+Route::get('/register/company', 'Auth\RegisterController@showCompanyRegisterForm')->name('cregist');
 
 Route::post('/login/company', 'Auth\LoginController@companyLogin');
 Route::post('/register/company', 'Auth\RegisterController@createCompany');
 
-Route::view('/home', 'home')->middleware('auth');
 Route::view('/translator', 'translator');
 Route::view('/personal', 'personal');
 Route::view('/company', 'company');
+
+Route::get('/chooselogin', function() {
+	return view('chooselogin');
+})->name('chooselogin');
+
+Route::get('/chooseregist', function() {
+	return view('chooseregist');
+})->name('chooseregist');
