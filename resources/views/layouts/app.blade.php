@@ -50,7 +50,7 @@
                     <ul class="navbar-nav ml-auto">
                         
                         <!-- Authentication Links -->
-                        
+                    @if (!(Route::has('chooseregist') || Route::has('chooselogin')))
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -83,6 +83,7 @@
                             </li>
                         @endguest
                     </ul>
+                    @endif
                 </div>
             </div>
         </nav>
