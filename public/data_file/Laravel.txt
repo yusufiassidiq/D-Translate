@@ -1,0 +1,23 @@
+- Install laravel
+composer update
+
+- Copy env
+copy .env.example .env
+
+- Generate key
+php artisan key:generate
+
+- Cara import database laravel
+php artisan migrate
+
+- Import isi database
+php artisan db:seed
+
+- Server
+php artisan serve
+
+- Seeder
+php artisan make:seeder NamaSeeder
+-- Update seed
+composer dump-autoload
+php artisan db:seed
