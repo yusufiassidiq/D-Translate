@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','notelf'
+        'name', 'email', 'password','notelf','role'
     ];
 
     /**
@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function job(){
 		return $this->hasMany(Job::class);
 	}
+
+    public function role_name(){
+        return strtolower($this->role);
+    }
 }
