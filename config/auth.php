@@ -46,21 +46,6 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-
-        'translator' => [
-            'driver' => 'session',
-            'provider' => 'translators',
-        ],
-
-        'personal' => [
-            'driver' => 'session',
-            'provider' => 'personals',
-        ],
-
-        'company' => [
-            'driver' => 'session',
-            'provider' => 'companies',
-        ],
     ],
 
     /*
@@ -90,20 +75,6 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-        'translators' => [
-            'driver' => 'eloquent',
-            'model' => App\Translator::class,
-        ],
-
-        'personals' => [
-            'driver' => 'eloquent',
-            'model' => App\Personal::class,
-        ],
-
-        'companies' => [
-            'driver' => 'eloquent',
-            'model' => App\Company::class,
-        ],
     ],
 
     /*

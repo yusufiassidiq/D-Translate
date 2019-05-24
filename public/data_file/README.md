@@ -1,6 +1,6 @@
 # DTranslate
 
-![](https://raw.githubusercontent.com/yusufiassidiq/D-Translate/master/dokumentasi/DTranslate.png)
+![](https://raw.githubusercontent.com/aliilkom/Markdown/master/Dokumentasi/DTranslate.png)
 
 ## Latar belakang
 
@@ -24,7 +24,7 @@ client dengan penerjemah.
   - Perangkat lunak ini diperuntukan bagi pengguna untuk mencari penerjemah dokumen atau gambar
   - Selain itu, proyek ini diperuntukkan bagi penerjemah yang mencari pekerjaan dalam penerjemahan dokumen
   - Menggunakan framework laravel dengan object oriented programming
-![](https://raw.githubusercontent.com/yusufiassidiq/D-Translate/master/dokumentasi/Laravel.png)
+![](https://raw.githubusercontent.com/aliilkom/Markdown/master/Dokumentasi/Laravel.png)
 
 ## Deskripsi Singkat
 
@@ -37,6 +37,6 @@ Untuk pembayaran, dilakukan via transfer dengan mengirimkan bukti transfer.
 
 ## Pengembang
 
-  - Ali Imron 					        (G64150016)
+  - Ali Imron 					(G64150016)
   - Yusuf Ibadurrahman Assidiq	(G64160002)
-  - Bobby Jonathan				      (G64160091)
+  - Bobby Jonathan				(G64160091)
