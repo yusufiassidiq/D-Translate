@@ -33,6 +33,9 @@ Route::get('/viewjob/{id}', 'ListjobController@show_detail')->name('viewjob');
 Route::get('/aktivitas','ActivityController@show')->name('aktivitas');
 
 Route::get('/request/{id}','ActivityController@translate');
+Route::get('/accept/{id}','ActivityController@accept');
+Route::get('/reject/{id}','ActivityController@reject');
+Route::get('/return/{id}','ActivityController@back');
 
 // multiauth
 // Route::get('/login/translator', 'Auth\LoginController@showTranslatorLoginForm');

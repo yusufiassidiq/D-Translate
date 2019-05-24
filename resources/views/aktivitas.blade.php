@@ -37,13 +37,13 @@
                                         <p><small class="text-muted">{{ $request_t->request_date }} </small>You sent request to {{App\User::find($request_t->user_id)->name}} to translate "{{ App\Job::find($request_t->job_id)->namadokumen }}"</p>
                                     @endif
                                     @if($request_t->status==1)
-                                        <p><small class="text-muted">{{ $request_t->accept_date }} </small>{{App\User::find($request_t->user_id)->name}} accepted your request for borrowing "{{ App\Book::find($request_t->job_id)->namadokumen }}"!</p>
+                                        <p><small class="text-muted">{{ $request_t->accept_date }} </small>{{App\User::find($request_t->user_id)->name}} accepted your request for translating "{{ App\Job::find($request_t->job_id)->namadokumen }}"! <a href="viewjob/{{$request_t->job_id}}/"  class="btn btn-primary">Download Document</a>  </p>
                                     @endif
                                     @if($request_t->status==2)
-                                    <p><small class="text-muted">{{ $request_t->return_date }} </small>You have returned {{App\User::find($request_t->user_id)->name}}'s "{{ App\Job::find($request_t->job_id)->namadokumen }}" book</p>
+                                    <p><small class="text-muted">{{ $request_t->return_date }} </small>You have returned {{App\User::find($request_t->user_id)->name}}'s "{{ App\Job::find($request_t->job_id)->namadokumen }}" document</p>
                                     @endif
                                     @if($request_t->status==3)
-                                    <p><small class="text-muted">{{ $request_t->reject_date }} </small>{{App\User::find($request_t->user_id)->name}} have declined your request for "{{ App\Job::find($request_t->job_id)->namadokumen }}"</p>
+                                    <p><small class="text-muted">{{ $request_t->reject_date }} </small>{{App\User::find($request_t->user_id)->name}} have declined your request for translating "{{ App\Job::find($request_t->job_id)->namadokumen }}"</p>
                                     @endif
                                     
                                     @endforeach
@@ -57,7 +57,7 @@
                                 @endif  
                                     @foreach($requests_accept->all() as $request_a) 
                                     @if($request_a->status==0)
-                                        <p><small class="text-muted">{{ $request_a->request_date }} </small>{{App\User::find($request_a->translator_id)->name}} wants to translate "{{ App\Job::find($request_a->job_id)->namadokumen }}" 
+                                        <p><small class="text-muted">{{ $request_a->request_date }} </small>{{App\User::find($request_a->translator_id)->name}} wants to translate your document named "{{ App\Job::find($request_a->job_id)->namadokumen }}" 
                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#b_notif_modal">
                                                 See Details
                                             </button> 
@@ -65,14 +65,14 @@
                                         @include('layouts.partial.b_notif_modal')
                                     @endif
                                     @if($request_a->status==1)
-                                    <p><small class="text-muted">{{ $request_a->accept_date }} </small>You lended "{{ App\Job::find($request_a->job_id)->namadokumen }}" to {{App\User::find($request_a->translator_id)->name}} <a href='{{ url("/return/{$request_l->id}") }}' class="btn btn-primary pull-right">I have Received my Book back</a></p>
+                                    <p><small class="text-muted">{{ $request_a->accept_date }} </small>You accept {{App\User::find($request_a->translator_id)->name}} to translate your document named "{{ App\Job::find($request_a->job_id)->namadokumen }}" <a href='{{ url("/return/{$request_a->id}") }}' class="btn btn-primary pull-right">I have received my document back</a></p>
                                     
                                     @endif
                                     @if($request_a->status==2)
-                                    <p><small class="text-muted">{{ $request_a->return_date }} </small>{{App\User::find($request_a->translator_id)->name}} have returned your "{{ App\Job::find($request_a-job_id)->namadokumen }}"</p>
+                                    <p><small class="text-muted">{{ $request_a->return_date }} </small>{{App\User::find($request_a->translator_id)->name}} have returned your document named "{{ App\Job::find($request_a->job_id)->namadokumen }}"</p>
                                     @endif
                                     @if($request_a->status==3)
-                                    <p><small class="text-muted">{{ $request_a->reject_date }} </small>You have declined {{App\User::find($request_a->translator_id)->name}}'s request for "{{ App\Job::find($request_a->job_id)->namadokumen }}"</p>
+                                    <p><small class="text-muted">{{ $request_a->reject_date }} </small>You have declined {{App\User::find($request_a->translator_id)->name}}'s request for translating "{{ App\Job::find($request_a->job_id)->namadokumen }}"</p>
                                     @endif
                                     @endforeach
                                     <hr>

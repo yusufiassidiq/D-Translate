@@ -21,8 +21,12 @@
                         <div class="form-group">
                             @if(($job->user_id) != $users)
                             <a class="btn btn-primary" data-toggle="modal" href="" style = "position:absolute; top:312px;" data-target="#myModal">Terjemahkan</a>
-                            <a href="{{url('/data_file/'.$job->file)}}" style = "position:absolute; top:312px;left:130px;" class="btn btn-primary">Download</a>
-                            <a href="/listjob" class="btn btn-secondary" style = "position:absolute; top:312px;left:228px;">Kembali</a>
+                              @if(($job->show) == 0)
+                              <a href="{{url('/data_file/'.$job->file)}}" style = "position:absolute; top:312px;left:130px;" class="btn btn-primary">Download</a>
+                              <a href="/listjob" class="btn btn-secondary" style = "position:absolute; top:312px;left:228px;">Kembali</a>
+                              @else
+                              <a href="/listjob" class="btn btn-secondary" style = "position:absolute; top:312px;left:130px;">Kembali</a>
+                              @endif
                             @else
                             <a href="/listjob" class="btn btn-secondary" style = "position:absolute; top:312px;">Kembali</a>
                             @endif
@@ -30,7 +34,7 @@
                     </div>
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel"> Informasi Pemilik Dokumen</h5>
@@ -39,6 +43,7 @@
                                 </button>
                               </div>
                               <div class="modal-body">
+                              
                                 <table>
                                     <tr>
                                       <td valign="top"><h5>Nama</h5> </td> <td valign="top">&nbsp;:&nbsp;</td> <td> <h5> {{App\User::find($job->user_id)->name}} </h5> </td>

@@ -18,7 +18,7 @@
                 <h4>Maaf Tidak Ada Dokumen yang Tersedia</h4>
             @else
                 @foreach($sorted as $j)
-
+                    @if(($j->show==1))
                         <div class="container">
 
                             <div class="row">
@@ -45,7 +45,7 @@
                             </div>
                                     <hr >
                         </div>
-                    
+                    @endif
                 @endforeach
             @endif
             

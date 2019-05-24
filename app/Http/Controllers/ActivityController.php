@@ -27,12 +27,12 @@ class ActivityController extends Controller
             'job' => $job,
             'users' => $users,
             'requests_accept' => $requests_accept,
-            'requests_translate' => $requests_translate
-            // dd($job)
+            'requests_translate' => $requests_translate,
+            // dd($job) 
             ]);
     }
 
-    public function translate($id){//id book
+    public function translate($id){//id job
         $activity = new Activity;
         $activity->request_date = date('Y-m-d H:i:s');
         $activity->status = 0;
@@ -40,8 +40,45 @@ class ActivityController extends Controller
         $activity->translator_id = Auth::user()->id;
         $activity->job_id = $id;
         $activity->save();
-        //return ke mana kek
         return redirect()->back()->withInfo('Request Sent!');
+    }
+
+    public function accept($id){//id activity
+        $data = Activity::find($id);
+        $data->status = 1;
+
+        $stat = Job::find($data->job_id);
+        // Make sure you've got the Page model
+        if($stat) {
+            $stat->show = 0;
+            $stat->save();
+        }
+
+        $data->accept_date = date('Y-m-d H:i:s');
+        $data->save();  
+        return redirect()->back()->withInfo('You accepted the request!');  
+    }
+    public function reject($id){//id activity
+        $data = Activity::find($id);
+        $data->status = 3;
+        $data->reject_date = date('Y-m-d H:i:s');
+        $data->save();
+        return redirect()->back()->withDanger('You rejected the request!');    
+    }
+
+    public function back($id){//id activity
+        $data = Activity::find($id);
+        $data->status = 2;
+        $data->return_date = date('Y-m-d H:i:s');
+        $stat = Job::find($data->job_id);
+        // Make sure you've got the page model
+        if($stat) {
+            $stat->show = 0;
+            $stat->save();
+        }
+        $data->save();  
+        //return apalah
+        return redirect()->back()->withInfo('He returned your book');  
     }
 
 }
