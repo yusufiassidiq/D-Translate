@@ -56,7 +56,7 @@ class ListjobController extends Controller
     {
     	$this->validate($request,[
     		'namadokumen' => 'required',
-            'keterangan' => 'required|max:730'  ,
+            'keterangan' => 'required|max:650'  ,
             'harga' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg|max:2048',
             'file' => 'required|file',
@@ -94,7 +94,8 @@ class ListjobController extends Controller
         // if($job === NULL){
         //     return redirect('/listjob')->with('danger','No document found');
         // }
-        $users = Auth::user()->id;   
+        $users = Auth::user()->id;  
+         
         return view('viewjob', compact('users','job'));
         // return view('/viewjob');
     }
