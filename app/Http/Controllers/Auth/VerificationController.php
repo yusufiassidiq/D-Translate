@@ -25,7 +25,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -37,5 +37,21 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    protected function redirectTo()
+    {
+        $user = Auth::user();
+        if($user->role == 'personal') {
+            return redirect('/Personal');
+        } 
+
+        if ($user->role == 'company') {
+            return redirect('/Company');
+        }
+
+        if ($user->role == 'translator'){
+            return redirect('/Translator');
+        }
     }
 }

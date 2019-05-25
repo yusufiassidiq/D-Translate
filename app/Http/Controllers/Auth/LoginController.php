@@ -27,8 +27,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/listjob';
-
     /**
      * Create a new controller instance.
      *
@@ -37,5 +35,21 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function redirectTo()
+    {
+        $user = Auth::user();
+        if($user->role == 'personal') {
+            return redirect('/Personal');
+        } 
+
+        if ($user->role == 'company') {
+            return redirect('/Company');
+        }
+
+        if ($user->role == 'translator'){
+            return redirect('/Translator');
+        }
     }
 }

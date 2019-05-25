@@ -62,9 +62,11 @@
                                 </li>
                             @endif
                         @else
+                            @if (Auth::user()->role != "Translator")
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="/listjob/add">Add Document</a>
+                                <a class="nav-link js-scroll-trigger" href="/{{ Auth::user()->role }}/add">Add Document</a>
                             </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -36,22 +36,28 @@ class PersonalController extends Controller
         $sorted = $job->sortByDesc('updated_at');
         $users = Auth::user()->id;
     	// mengirim data pegawai ke view pegawai
-    	return view('listjob', [
+    	return view('personal.listjob', [
             'sorted' => $sorted,
             'users' => $users,
             // dd($users)
-            ]);
+        ]);
     }
+
+    // menambahkan job
     public function add()
     {
     	return view('addjob');
     }
+
+    // menghapus job
     public function delete($id)
     {
         $pegawai = Job::find($id);
         $pegawai->delete();
-        return redirect('listjob');
+        return redirect('/listjob');
     }
+
+    // menyimpan job dalam database
     public function store(Request $request)
     {
     	$this->validate($request,[
@@ -83,10 +89,11 @@ class PersonalController extends Controller
             'user_id'=>Auth::user()->id,
     	]);
  
-        return redirect('/listjob');
+        return redirect('/Personal');
         // return redirect()->back();
         
     }
+
     //controller untuk ngeliat satu document
     public function show_detail(Request $request, $id){
         //query cari dokumen

@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="card-body">
                                     <br/>                 
-                                    <form method="post" action="/listjob/store" enctype="multipart/form-data">
+                                    <form method="post" action="/{{ Auth::user()->role }}/store" enctype="multipart/form-data">
 
                                         {{ csrf_field() }}
 
@@ -179,7 +179,7 @@
                                         <font color="red"> <p>* required</p> </font>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-success" value="Simpan">
-                                            <a href="/listjob" class="btn btn-primary" style = "position:absolute; right:20px;">Kembali</a>
+                                            <a href="/{{ Auth::user()->role }}" class="btn btn-primary" style = "position:absolute; right:20px;">Kembali</a>
                                         </div>
 
 

@@ -32,7 +32,22 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/listjob';
+    //protected $redirectTo = '/listjob';
+    protected function redirectTo()
+    {
+        $user = Auth::user();
+        if($user->role == 'personal') {
+            return redirect('/Personal');
+        } 
+
+        if ($user->role == 'company') {
+            return redirect('/Company');
+        }
+
+        if ($user->role == 'translator'){
+            return redirect('/Translator');
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -74,7 +89,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'notelf' => $data['notelf'],
-            'role' => $data['role'],
+            'role' => strtolower($data['role']),
         ]);
     }
 }

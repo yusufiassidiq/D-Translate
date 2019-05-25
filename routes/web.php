@@ -32,12 +32,23 @@ Route::get('job/hapus/{id}', 'ListjobController@delete');
 Route::get('/viewjob/{id}', 'ListjobController@show_detail')->name('viewjob');
 */
 
-Route::get('/listjob', 'PersonalController@index')->name('listjob');
-Route::get('/listjob/add', 'PersonalController@add');
-Route::post('/listjob/store', 'PersonalController@store');
-
+Route::get('/Personal', 'PersonalController@index')->name('listjobpersonal');
+Route::get('/Personal/add', 'PersonalController@add');
+Route::post('/Personal/store', 'PersonalController@store');
 Route::get('job/hapus/{id}', 'PersonalController@delete');
-Route::get('/viewjob/{id}', 'PersonalController@show_detail')->name('viewjob');
+Route::get('/viewjobpersonal/{id}', 'PersonalController@show_detail')->name('viewjobpersonal');
+
+Route::get('/Company', 'CompanyController@index')->name('listjobcompany');
+Route::get('/Company/add', 'CompanyController@add');
+Route::post('/Company/store', 'CompanyController@store');
+Route::get('job/hapus/{id}', 'CompanyController@delete');
+Route::get('/viewjobcompany/{id}', 'CompanyController@show_detail')->name('viewjobcompany');
+
+Route::get('/Translator', 'TranslatorController@index')->name('listjobtranslator');
+Route::get('/Translator/add', 'TranslatorController@add');
+Route::post('/Translator/store', 'TranslatorController@store');
+Route::get('job/hapus/{id}', 'TranslatorController@delete');
+Route::get('/viewjobtranslator/{id}', 'TranslatorController@show_detail')->name('viewjobtranslator');
 
 Route::get('/aktivitas','UserController@show')->name('aktivitas');
 
